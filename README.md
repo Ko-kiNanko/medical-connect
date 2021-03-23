@@ -220,3 +220,4 @@ password：testtest1<br>
 - belongs_to :user
 
 ### ER図
+https://gyazo.com/c221b72ab1608852fc73f64a370814bc
