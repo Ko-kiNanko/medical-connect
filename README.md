@@ -96,11 +96,10 @@ password：testtest1<br>
 
 ## 実装予定
 ④掲示板機能、⑤検索機能、⑥動画コンテンツの導入
+
 ## データベース設計
 
-## ローカルでの動作方法
-
-## usersテーブル
+### usersテーブル
 
 | Column               | Type       | Options                    |
 | -------------------- | ---------- | -------------------------- |
@@ -113,8 +112,6 @@ password：testtest1<br>
 | last_name_kana       | string     | null: false                |
 | first_name_kana      | string     | null: false                |
 
-
-
 ### Association
 
 - has_many :items
@@ -122,7 +119,7 @@ password：testtest1<br>
 - has_many :room_users
 - has_many :boards
 - has_many :board_users
-- has_many :chat_messages
+- has_many :chats
 - has_many :board_messages
 
 ## itemsテーブル
@@ -137,8 +134,6 @@ password：testtest1<br>
 | outer_diameter_id  | integer    | null: false  |
 | user            | references | null: false, foreign_key: true  |
 
-
-
 ### Association
 
 - belongs_to :user
@@ -149,8 +144,6 @@ password：testtest1<br>
 
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
-| user          | references | null: false, foreign_key: true  |
-| item          | references | null: false, foreign_key: true  |
 | name          | string     | null: false                     |
 
 ### Association
@@ -172,7 +165,8 @@ password：testtest1<br>
 - belongs_to :room
 - belongs_to :user
 
-## chat_messagesテーブル
+
+## chatsテーブル
 
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
@@ -191,13 +185,11 @@ password：testtest1<br>
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
 | user          | references | null: false, foreign_key: true  |
-| item          | references | null: false, foreign_key: true  |
-| name          | string     | null: false                     |
 
 ### Association
 
 - has_many :users, through: :room_users
-- has_many :messages, dependent: :destroy
+- has_many :board_messages, dependent: :destroy
 - has_many :room_users, dependent: :destroy
 
 
@@ -205,23 +197,26 @@ password：testtest1<br>
 
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
-| room          | references | null: false, foreign_key: true  |
+| board         | references | null: false, foreign_key: true  |
 | user          | references | null: false, foreign_key: true  |
 
 ### Association
 
-- belongs_to :room
+- belongs_to :board
 - belongs_to :user
+
 
 ## board_messagesテーブル
 
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
-| room          | references | null: false, foreign_key: true  |
+| board         | references | null: false, foreign_key: true  |
 | user          | references | null: false, foreign_key: true  |
-| content       | string     | null: false                     |
+| message       | string     | null: false                     |
 
 ### Association
 
-- belongs_to :room
+- belongs_to :board
 - belongs_to :user
+
+### ER図
