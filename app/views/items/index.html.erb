@@ -39,39 +39,17 @@
   </div>
 
 
-  <div class='feature-contents'>
-    <h2 class='title'>
-      connectの特徴
-    </h2>
-    <ul class='feature-lists'>
-      <li class='list'>
-        <%= image_tag "furima-intro04.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          簡単に医療部材の情報を検索できる
-        </h3>
-        <p class='feature-list-description'>
-          ネット環境があれば、病院でもどこでも情報の検索が可能！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro05.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          チャット機能も完備
-        </h3>
-        <p class='feature-list-description'>
-          聞きたい情報があればいつでも相談可能
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro06.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          掲示板機能も完備
-        </h3>
-        <p class='feature-list-description'>
-          トップページで新しい情報があればお知らせする事も可能
-        </p>
-      </li>
-    </ul>
+  <div class="board-content">
+    <div class="board-input">
+      <%= form_with(model: @board, local: true) do |form| %>
+      <%= form.text_area :text, placeholder: "投稿内容", rows: "10" %>
+      <%= form.submit "投稿する" %>
+      <% end %>
+    </div>
+    <div class="board-output">
+      <%= "投稿内容" %>
+      <%= "投稿者名" %>
+    </div>
   </div>
 
   <%# devise一覧,見出し %>
