@@ -19,4 +19,12 @@ class Item < ApplicationRecord
   end
   belongs_to :user
   has_one_attached :image
+
+  def self.search(search)
+    if search != ""
+      Item.where('text LIKE(?)', "%#{search}%")
+    else
+      Items.all
+    end
+  end
 end

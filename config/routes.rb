@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'items#index'
-  resources :items
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
   resources :users, only: [:edit, :update]
   resources :rooms, only: [:index, :new, :create, :destroy] do
     resources :chats, only: [:index, :create]

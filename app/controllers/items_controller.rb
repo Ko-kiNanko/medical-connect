@@ -1,13 +1,22 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_params, only: [:show, :edit, :destroy]
-
+  before_action :search_item, only: [:index, :search]
   def index
     @items = Item.all
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
   def new
     @item = Item.new
+    # if @item.save
+    #   redirect_to root_path
+    # else
+    #   render :new
+    # end
   end
 
   def create
@@ -47,5 +56,9 @@ class ItemsController < ApplicationController
     unless @item.user.id == current_user.id
       redirect_to action: :index
     end
+  end
+  
+  def search_item
+    @p = Item.ransack(params[:q])
   end
 end
