@@ -309,10 +309,11 @@ a {
   margin: 30px;
 }
 
-.board-text {
+.board-textarea {
   width: 80%;
   height: 50px;
   margin-top: 30px;
+  text-align: center;
 }
 .board-btn {
   border: 0;
@@ -341,4 +342,24 @@ form input[type="submit"]:hover {
 .board-top {
   font-size: 2em;
   border-bottom: solid 1px black;
+}
+.board-text {
+  display: flex;
+
+// justify-content: space-between;
+}
+
+.main-text {
+  margin-left: 20%;
+    text-align: center;
+}
+.text-nickname {
+  margin-left: auto;
+  margin-right: 5px;
+  right: 5%;
+}
+
+.board-title {
+  font-size: 2em;
+  font-family: 'Times New Roman', Times, serif;
 }
