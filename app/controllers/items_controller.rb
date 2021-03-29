@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   before_action :search_item, only: [:index, :search]
   def index
     @items = Item.all
+    @board = Board.new
+    @boards = Board.all
   end
 
   def search
