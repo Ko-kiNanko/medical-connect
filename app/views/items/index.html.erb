@@ -42,6 +42,7 @@
         </p>
         <p class= "text-nickname">
           <%= comment.user.nickname%>
+          <%= link_to "削除", board_path(comment.id), method: :delete, class:"board-destroy" %>
         </p>
         </div>
       <% end %>

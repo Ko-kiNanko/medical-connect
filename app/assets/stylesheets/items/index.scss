@@ -363,3 +363,12 @@ form input[type="submit"]:hover {
   font-size: 2em;
   font-family: 'Times New Roman', Times, serif;
 }
+
+.board-destroy {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(46, 50, 250);
+  margin-left: 10px;
+  padding: 2px;
+  border-radius: 5px;
+}
